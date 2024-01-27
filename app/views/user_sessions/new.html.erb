@@ -1,2 +1,18 @@
-<h1>UserSessions#new</h1>
-<p>Find me in app/views/user_sessions/new.html.erb</p>
+<h1>Login page</h1>
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<%= form_with model: @user, url: user_sessions_create_path do |form| %>
+  <div>
+    <%= form.label :username %><br>
+    <%= form.text_field :username %>
+  </div>
+  <div>
+    <%= form.label :password %><br>
+    <%= form.password_field :password %>
+  </div>
+  <p>
+    <%= form.submit 'Login' %>
+  </p>
+<% end %>
