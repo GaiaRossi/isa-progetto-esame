@@ -1,3 +1,4 @@
 class User < ApplicationRecord
-    has_many: projects
+    has_secure_password :password
+    has_many :projects
 end

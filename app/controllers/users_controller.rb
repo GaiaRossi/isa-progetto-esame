@@ -65,6 +65,8 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.fetch(:user, {})
+      # devo inserire questa riga altrimenti non riesco a
+      # passare un nuovo utente per la creazione
+      params.require(:user).permit(:username, :password, :password_confirmation)
     end
 end
