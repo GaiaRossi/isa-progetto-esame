@@ -6,6 +6,10 @@ class UsersController < ApplicationController
     if current_user.blank?
       render plain: 'Unauthorized'
     end
+
+    if !current_user.is_admin?
+      render plain: 'Non sei admin!'
+    end
     @users = User.all
   end
 
