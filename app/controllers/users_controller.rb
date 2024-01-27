@@ -3,6 +3,9 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
+    if current_user.blank?
+      render plain: 'Unauthorized'
+    end
     @users = User.all
   end
 
