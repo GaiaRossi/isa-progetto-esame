@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'user_sessions/new'
-  post 'user_sessions/create'
+  resources :user_sessions, only: [:new, :create, :destroy]
   resources :users
   resources :projects
   resources :tasks

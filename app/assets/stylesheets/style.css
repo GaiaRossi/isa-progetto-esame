@@ -34,9 +34,25 @@ nav ul{
 
 nav ul li{
     display: inline-block;
+    position: relative;
 }
 
 nav ul li:hover{
     background-color: black;
     color: white;
+}
+
+li.dropdown{
+    position: relative;
+}
+
+ul.dropdown-content{
+    display: none;
+    list-style: none;
+    position: absolute;
+    float: none;
+}
+
+li.dropdown:hover ul.dropdown-content{
+    display: block;
 }

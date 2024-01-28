@@ -12,7 +12,12 @@ class UserSessionsController < ApplicationController
       redirect_to projects_path
     else
       flash[:notice] = "Login failed!"
-      redirect_to user_sessions_new_path
+      redirect_to new_user_session_path
     end
   end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_path
+  end  
 end
