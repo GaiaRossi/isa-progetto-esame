@@ -9,7 +9,7 @@ class UserSessionsController < ApplicationController
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
       flash[:notice] = "Login success!"
-      redirect_to user_sessions_new_path
+      redirect_to projects_path
     else
       flash[:notice] = "Login failed!"
       redirect_to user_sessions_new_path
