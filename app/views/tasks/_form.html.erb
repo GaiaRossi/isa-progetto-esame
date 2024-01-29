@@ -12,6 +12,18 @@
   <% end %>
 
   <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :description %><br>
+    <%= form.text_field :description %>
+  </div>
+  <div>
+    <%= form.label :project_id %><br>
+    <%= form.collection_select :project_id, Project.all, :id, :name %>
+  </div>
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
