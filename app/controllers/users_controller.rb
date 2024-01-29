@@ -1,35 +1,29 @@
 class UsersController < ApplicationController
+  before_action :require_admin
   before_action :set_user, only: %i[ show edit update destroy ]
-
+  
   # GET /users or /users.json
   def index
-    if current_user.blank?
-      render plain: 'Unauthorized'
-    end
-
-    if !current_user.is_admin?
-      render plain: 'Non sei admin!'
-    end
     @users = User.all
   end
-
+  
   # GET /users/1 or /users/1.json
   def show
   end
-
+  
   # GET /users/new
   def new
     @user = User.new
   end
-
+  
   # GET /users/1/edit
   def edit
   end
-
+  
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
-
+    
     respond_to do |format|
       if @user.save
         format.html { redirect_to user_url(@user), notice: "User was successfully created." }
@@ -40,7 +34,7 @@ class UsersController < ApplicationController
       end
     end
   end
-
+  
   # PATCH/PUT /users/1 or /users/1.json
   def update
     respond_to do |format|
@@ -53,27 +47,35 @@ class UsersController < ApplicationController
       end
     end
   end
-
+  
   # DELETE /users/1 or /users/1.json
   def destroy
     @user.destroy!
-
+    
     respond_to do |format|
       format.html { redirect_to users_url, notice: "User was successfully destroyed." }
       format.json { head :no_content }
     end
   end
-
+  
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+  
+  # Only allow a list of trusted parameters through.
+  def user_params
+    # devo inserire questa riga altrimenti non riesco a
+    # passare un nuovo utente per la creazione
+    params.require(:user).permit(:username, :password, :password_confirmation)
+  end
+  
+  private
+  def require_admin
+    unless current_user.is_admin?
+      flash[:error] = "You must be admin in to access this section!"
+      redirect_to projects_path
     end
-
-    # Only allow a list of trusted parameters through.
-    def user_params
-      # devo inserire questa riga altrimenti non riesco a
-      # passare un nuovo utente per la creazione
-      params.require(:user).permit(:username, :password, :password_confirmation)
-    end
+  end
 end

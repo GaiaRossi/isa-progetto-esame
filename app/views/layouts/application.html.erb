@@ -18,7 +18,9 @@
         <% if signed_in? %>
           <li><%= link_to "Projects", projects_path %></li>
           <li><%= link_to "Tasks", tasks_path %></li>
+          <% if current_user.is_admin? %>
           <li><%= link_to "Users", users_path %></li>
+          <% end %>
           <li><%= link_to "Sign out", user_session_path(current_user), data: { turbo_method: :delete } %></li>
         <% else %>
           <li><%= link_to "Sign in", new_user_session_path %></li>

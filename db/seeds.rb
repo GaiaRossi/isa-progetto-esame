@@ -7,3 +7,6 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+admin_user = User.create(username: "admin_user", is_admin: true, password: ENV['ADMIN_RAILS_PASSWORD'])
+normal_user = User.create(username: "standard_user", is_admin: false, password: ENV['STANDARD_RAILS_PASSWORD'])
