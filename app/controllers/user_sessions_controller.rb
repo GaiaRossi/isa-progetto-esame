@@ -1,4 +1,10 @@
 class UserSessionsController < ApplicationController
+  # in application controller ho definito come
+  # before action la richiesta di essere loggati
+  # ma questo controller non deve richiedere tale controllo
+  # se no come mi loggo?
+  skip_before_action :require_login, only: [:new, :create]
+
   def new
     @user = User.new
   end
