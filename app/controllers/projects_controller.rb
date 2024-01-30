@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: %i[ show edit update destroy ]
-
+  before_action :require_admin, only: %i[ new create edit update destroy ]
   # GET /projects or /projects.json
   def index
     if current_user.is_admin?
@@ -70,5 +70,13 @@ class ProjectsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def project_params
       params.require(:project).permit(:name, :description)
+    end
+
+    private
+    def require_admin
+      unless current_user.is_admin?
+        flash[:error] = "You must be admin in to access this section!"
+        redirect_to projects_path
+      end
     end
 end
