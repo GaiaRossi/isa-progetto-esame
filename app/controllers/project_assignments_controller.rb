@@ -66,7 +66,7 @@ class ProjectAssignmentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_assignment_params
-      params.fetch(:project_assignment, {})
+      params.require(:project_assignment).permit(:project_id, :user_id)
     end
 
   private

@@ -12,6 +12,14 @@
   <% end %>
 
   <div>
+    <%= form.label :project_id %>
+    <%= form.collection_select :project_id, Project.all, :id, :name %>
+  </div>
+  <div>
+    <%= form.label :user_id %>
+    <%= form.collection_select :user_id, User.all, :id, :username %>
+  </div>
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

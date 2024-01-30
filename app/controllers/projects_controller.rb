@@ -3,7 +3,11 @@ class ProjectsController < ApplicationController
 
   # GET /projects or /projects.json
   def index
-    @projects = Project.all
+    if current_user.is_admin?
+      @projects = Project.all
+    else
+      @projects = Project.assigned_to(current_user)
+    end
   end
 
   # GET /projects/1 or /projects/1.json
