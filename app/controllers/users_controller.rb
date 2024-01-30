@@ -70,12 +70,4 @@ class UsersController < ApplicationController
     # passare un nuovo utente per la creazione
     params.require(:user).permit(:username, :password, :password_confirmation)
   end
-  
-  private
-  def require_admin
-    unless current_user.is_admin?
-      flash[:error] = "You must be admin in to access this section!"
-      redirect_to projects_path
-    end
-  end
 end

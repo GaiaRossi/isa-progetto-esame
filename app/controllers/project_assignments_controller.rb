@@ -68,12 +68,4 @@ class ProjectAssignmentsController < ApplicationController
     def project_assignment_params
       params.require(:project_assignment).permit(:project_id, :user_id)
     end
-
-  private
-    def require_admin
-      unless current_user.is_admin?
-        flash[:error] = "You must be admin in to access this section!"
-        redirect_to projects_path
-      end
-    end
 end

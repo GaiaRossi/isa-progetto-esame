@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
     helper_method :current_user
     helper_method :signed_in?
+    helper_method :require_admin
     
     before_action :require_login
     
@@ -10,6 +11,13 @@ class ApplicationController < ActionController::Base
 
     def signed_in?
         !current_user.nil?
+    end
+
+    def require_admin
+        unless current_user.is_admin?
+          flash[:error] = "You must be admin in to access this section!"
+          redirect_to projects_path
+        end
     end
 
     private
