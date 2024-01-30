@@ -3,7 +3,11 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all
+    if current_user.is_admin?
+      @tasks = Task.all
+    else
+      @tasks = Task.visible_to(current_user)
+    end
   end
 
   # GET /tasks/1 or /tasks/1.json
