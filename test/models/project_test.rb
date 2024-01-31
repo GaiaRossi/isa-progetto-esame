@@ -10,4 +10,10 @@ class ProjectTest < ActiveSupport::TestCase
     project = Project.new(description: 'descrizione progetto')
     refute project.valid?, 'project is valid without name'
   end
+
+  test 'invalid if name already taken' do
+    project = Project.create(name: 'progetto', description: 'descrizione progetto')
+    project_dup = Project.create(name: 'progetto', description: 'descrizione progetto')
+    refute project_dup.valid?, 'project is created with same name'
+  end
 end
