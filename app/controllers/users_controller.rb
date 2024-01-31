@@ -68,6 +68,6 @@ class UsersController < ApplicationController
   def user_params
     # devo inserire questa riga altrimenti non riesco a
     # passare un nuovo utente per la creazione
-    params.require(:user).permit(:username, :password, :password_confirmation)
+    params.require(:user).permit(:username, :is_admin, :password, :password_confirmation)
   end
 end
