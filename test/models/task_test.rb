@@ -15,8 +15,8 @@ class TaskTest < ActiveSupport::TestCase
 
   test 'invalid if name already taken' do
     project = Project.create(name: 'progetto', description: 'descrizione progetto')
-    task = Task.new(name: 'task', description: 'descrizione task', project_id: project.id)
-    task_dup = Task.new(name: 'task', description: 'descrizione task', project_id: project.id)
+    task = Task.create(name: 'task', description: 'descrizione task', project_id: project.id)
+    task_dup = Task.create(name: 'task', description: 'descrizione task', project_id: project.id)
     refute task_dup.valid?, 'task created with name already taken'
   end
 
