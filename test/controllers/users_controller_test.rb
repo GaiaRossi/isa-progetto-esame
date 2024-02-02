@@ -2,9 +2,7 @@ require "test_helper"
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    post user_sessions_url, params: {
-      user: { username: users(:admin).username, password: "test_password_admin" }
-    }
+    log_in_as_admin
     @user = users(:removable)
   end
 

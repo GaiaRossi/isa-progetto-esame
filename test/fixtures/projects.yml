@@ -9,3 +9,7 @@ two:
   id: 2
   name: "Secondo progetto"
   description: "Secondo progetto test"
+
+removable:
+  name: "Progetto rimovibile test"
+  description: "Progetto test"

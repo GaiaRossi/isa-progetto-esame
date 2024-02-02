@@ -11,5 +11,10 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+    def log_in_as_admin
+      post user_sessions_url, params: {
+        user: { username: users(:admin).username, password: "test_password_admin" }
+      }
+    end
   end
 end
