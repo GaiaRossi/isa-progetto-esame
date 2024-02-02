@@ -2,8 +2,12 @@ require "application_system_test_case"
 
 class UsersTest < ApplicationSystemTestCase
   setup do
-    log_in_as_admin
-    @user = users(:one)
+    @user = users(:admin)
+    visit new_user_session_url
+    fill_in "Username", with: @user.username
+    fill_in "Password", with: "test_password_admin"
+    click_on "Login"
+    assert_selector "h1", text: "Projects"
   end
 
   test "visiting the index" do
