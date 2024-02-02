@@ -2,6 +2,7 @@ require "test_helper"
 
 class ProjectAssignmentsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    log_in_as_admin
     @project_assignment = project_assignments(:one)
   end
 
@@ -17,7 +18,9 @@ class ProjectAssignmentsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create project_assignment" do
     assert_difference("ProjectAssignment.count") do
-      post project_assignments_url, params: { project_assignment: {  } }
+      post project_assignments_url, params: { project_assignment:
+        { user_id: 1 , project_id: 2 }
+      }
     end
 
     assert_redirected_to project_assignment_url(ProjectAssignment.last)
@@ -34,7 +37,7 @@ class ProjectAssignmentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update project_assignment" do
-    patch project_assignment_url(@project_assignment), params: { project_assignment: {  } }
+    patch project_assignment_url(@project_assignment), params: { project_assignment: { user_id: 1 } }
     assert_redirected_to project_assignment_url(@project_assignment)
   end
 
