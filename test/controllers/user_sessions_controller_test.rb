@@ -13,4 +13,11 @@ class UserSessionsControllerTest < ActionDispatch::IntegrationTest
     assert flash[:notice] = "Login success!"
     assert_redirected_to projects_url
   end
+
+  test "should not log in" do
+    post user_sessions_url, params: {
+      user: { username: "", password: "" }
+    }
+    assert flash[:notice] = "Login failed!"
+  end
 end
