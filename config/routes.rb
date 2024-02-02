@@ -12,7 +12,4 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "user_sessions#new"
-
-  # Rotes for Devise
-  devise_for :users 
 end

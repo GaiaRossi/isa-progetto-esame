@@ -2,12 +2,8 @@ require "test_helper"
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    get '/user_sessions/new'
-    user = users(:admin)
-    sign_in user
-    post user_sessions_url
-    follow_redirect!
-    assert_response :success
+    @user = users(:admin)
+    sign_in @user
   end
 
   test "should get index" do
