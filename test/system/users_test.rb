@@ -3,11 +3,7 @@ require "application_system_test_case"
 class UsersTest < ApplicationSystemTestCase
   setup do
     @user = users(:removable)
-    visit new_user_session_url
-    fill_in "Username", with: "test_admin_user"
-    fill_in "Password", with: "test_password_admin"
-    click_on "Login"
-    assert_selector "h1", text: "Projects"
+    login_as_admin
   end
 
   test "visiting the index" do
