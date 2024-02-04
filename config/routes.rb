@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   resources :user_sessions, only: [:new, :create, :destroy]
   resources :users
   resources :projects
-  resources :tasks
+  resources :tasks do
+    member do
+      get :set_task_as_completed
+    end
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

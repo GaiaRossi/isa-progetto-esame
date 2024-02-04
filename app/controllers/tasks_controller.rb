@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[ show edit update destroy ]
+  before_action :set_task, only: %i[ show edit update destroy set_task_as_completed ]
 
   # GET /tasks or /tasks.json
   def index
@@ -58,6 +58,15 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to tasks_url, notice: "Task was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+  # set task as completed
+  def set_task_as_completed
+    if @task.update({"is_completed": true})
+      redirect_to tasks_url, notice: "Task was successfully updated."
+    else
+      render :index, status: :unprocessable_entity
     end
   end
 
