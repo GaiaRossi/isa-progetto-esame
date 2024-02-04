@@ -17,4 +17,12 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     click_on "Login"
     assert_selector "h1", text: "Projects"
   end
+
+  def login_as_standard
+    visit new_user_session_url
+    fill_in "Username", with: "test_standard_user"
+    fill_in "Password", with: "test_password_standard"
+    click_on "Login"
+    assert_selector "h1", text: "Projects"
+  end
 end
