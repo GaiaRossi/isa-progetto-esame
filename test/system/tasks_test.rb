@@ -3,6 +3,7 @@ require "application_system_test_case"
 class TasksTest < ApplicationSystemTestCase
   setup do
     @task = tasks(:one)
+    login_as_standard
   end
 
   test "visiting the index" do
@@ -14,6 +15,10 @@ class TasksTest < ApplicationSystemTestCase
     visit tasks_url
     click_on "New task"
 
+    fill_in "Name", with: "Task creato da system test"
+    fill_in "Description", with: "Questo è un task creato da system test"
+    select "Primo progetto", :from => "task_project_id"
+
     click_on "Create Task"
 
     assert_text "Task was successfully created"
@@ -23,6 +28,8 @@ class TasksTest < ApplicationSystemTestCase
   test "should update Task" do
     visit task_url(@task)
     click_on "Edit this task", match: :first
+
+    fill_in "Name", with: "Task modificato da system test"
 
     click_on "Update Task"
 
