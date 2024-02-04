@@ -2,9 +2,9 @@ require "application_system_test_case"
 
 class UsersTest < ApplicationSystemTestCase
   setup do
-    @user = users(:admin)
+    @user = users(:removable)
     visit new_user_session_url
-    fill_in "Username", with: @user.username
+    fill_in "Username", with: "test_admin_user"
     fill_in "Password", with: "test_password_admin"
     click_on "Login"
     assert_selector "h1", text: "Projects"
@@ -15,30 +15,37 @@ class UsersTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Users"
   end
 
-  # test "should create user" do
-  #   visit users_url
-  #   click_on "New user"
+  test "should create user" do
+    visit users_url
+    click_on "New user"
 
-  #   click_on "Create User"
+    fill_in "Username", with: "test_da_system_rails"
+    uncheck "Is admin"
+    fill_in "Password", with: "test_password_standard"
+    fill_in "Password confirmation", with: "test_password_standard"
+    click_on "Create User"
 
-  #   assert_text "User was successfully created"
-  #   click_on "Back"
-  # end
+    assert_text "User was successfully created"
+    click_on "Back"
+  end
 
-  # test "should update User" do
-  #   visit user_url(@user)
-  #   click_on "Edit this user", match: :third
+  test "should update User" do
+    visit user_url(@user)
+    click_on "Edit this user", match: :first
+    fill_in "Username", with: @user.username
+    uncheck "Is admin"
+    fill_in "Password", with: "test_password_standard"
+    fill_in "Password confirmation", with: "test_password_standard"
+    click_on "Update User"
 
-  #   click_on "Update User"
+    assert_text "User was successfully updated"
+    click_on "Back"
+  end
 
-  #   assert_text "User was successfully updated"
-  #   click_on "Back"
-  # end
+  test "should destroy User" do
+    visit user_url(@user)
+    click_on "Destroy this user", match: :first
 
-  # test "should destroy User" do
-  #   visit user_url(@user)
-  #   click_on "Destroy this user", match: :third
-
-  #   assert_text "User was successfully destroyed"
-  # end
+    assert_text "User was successfully destroyed"
+  end
 end
