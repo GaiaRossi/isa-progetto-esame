@@ -3,6 +3,7 @@ require "application_system_test_case"
 class ProjectAssignmentsTest < ApplicationSystemTestCase
   setup do
     @project_assignment = project_assignments(:one)
+    login_as_admin
   end
 
   test "visiting the index" do
@@ -14,6 +15,8 @@ class ProjectAssignmentsTest < ApplicationSystemTestCase
     visit project_assignments_url
     click_on "New project assignment"
 
+    select "Progetto rimovibile test", :from => "project_assignment_project_id"
+    select "test_user", :from => "project_assignment_user_id"
     click_on "Create Project assignment"
 
     assert_text "Project assignment was successfully created"
@@ -24,6 +27,7 @@ class ProjectAssignmentsTest < ApplicationSystemTestCase
     visit project_assignment_url(@project_assignment)
     click_on "Edit this project assignment", match: :first
 
+    select "test_standard_user", :from => "project_assignment_user_id"
     click_on "Update Project assignment"
 
     assert_text "Project assignment was successfully updated"

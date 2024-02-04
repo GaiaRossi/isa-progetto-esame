@@ -8,4 +8,13 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     driver_option.add_argument("disable-gpu")
     driver_option.add_argument("no-sandbox")
   end
+
+  # Funzioni che richiamo spesso
+  def login_as_admin
+    visit new_user_session_url
+    fill_in "Username", with: "test_admin_user"
+    fill_in "Password", with: "test_password_admin"
+    click_on "Login"
+    assert_selector "h1", text: "Projects"
+  end
 end
