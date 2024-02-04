@@ -5,7 +5,7 @@
 <div>
   <%= link_to "Edit this task", edit_task_path(@task) %> |
   <%= link_to "Back to tasks", tasks_path %>
-  <% if !@task.is_completed? %>
+  <% unless @task.is_completed? %>
     <%= link_to "Set this task as completed", set_completed_task_url(@task) %>
   <% end %>
   <%= button_to "Destroy this task", @task, method: :delete %>
