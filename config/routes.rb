@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :projects
   resources :tasks do
     member do
-      get :set_task_as_completed
+      get :set_completed
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
