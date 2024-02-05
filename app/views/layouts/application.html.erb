@@ -14,7 +14,11 @@
   <body>
     <nav>
       <ul>
-        <li>Progetto</li>
+        <% if current_user.is_admin? %>
+          <li><%= link_to "Progetto", admin_dashboard_index_path %></li>
+        <% else %>
+          <li>Progetto</li>
+        <% end %>
         <% if signed_in? %>
           <li><%= link_to "Projects", projects_path %></li>
           <li><%= link_to "Tasks", tasks_path %></li>
