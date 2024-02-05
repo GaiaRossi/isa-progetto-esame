@@ -7,4 +7,12 @@ class Task < ApplicationRecord
         joins(:project => :user)
         .where("user_id = ?", user.id)
     }
+
+    scope :not_completed, -> {
+        where("is_completed = ?", false)
+    }
+
+    scope :completed, -> {
+        where("is_completed = ?", true)
+    }
 end

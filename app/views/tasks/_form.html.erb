@@ -24,6 +24,10 @@
     <%= form.collection_select :project_id, Project.all, :id, :name %>
   </div>
   <div>
+    <%= form.label :is_completed %><br>
+    <%= form.hidden_field :is_completed, value: false %>
+  </div>
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
