@@ -42,7 +42,7 @@
   </div>
   <div class="row">
     <div class="col">
-      <%= form.collection_select :project_id, Project.all, :id, :name %>
+      <%= form.collection_select :project_id, @projects, :id, :name %>
     </div>
   </div>
   <div class="row">
