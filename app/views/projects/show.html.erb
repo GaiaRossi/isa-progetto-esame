@@ -4,12 +4,21 @@
 
 <div>
   <% if current_user.is_admin? %>
-    <%= link_to "Edit this project", edit_project_path(@project) %>
-     |
+  <div class="row">
+    <div class="col">
+      <%= link_to "Edit this project", edit_project_path(@project), class: 'btn btn-dark' %>
+    </div>
+    <div class="col">
+      <%= link_to "Back to projects", projects_path, class: 'btn btn-outline-dark' %>
+    </div>
+  </div>
   <% end %>
-  <%= link_to "Back to projects", projects_path %>
 
   <% if current_user.is_admin? %>
-    <%= button_to "Destroy this project", @project, method: :delete %>
+  <div class="row">
+    <div class="col">
+      <%= button_to "Destroy this project", @project, method: :delete, class: 'btn btn-danger' %>
+    </div>
+  </div>
   <% end %>
 </div>
