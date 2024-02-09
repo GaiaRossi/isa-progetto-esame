@@ -12,16 +12,10 @@
 
 <div id="users">
   <% @users.each do |user| %>
-  <div class="row">
-    <div class="col">
       <%= render user %>
-    </div>
-  </div>
   <div class="row">
     <div class="col">
-      <p>
-        <%= link_to "Show this user", user, class: 'btn btn-outline-dark' %>
-      </p>
+      <%= link_to "Show this user", user, class: 'btn btn-outline-dark' %>
     </div>
   </div>
   <% end %>

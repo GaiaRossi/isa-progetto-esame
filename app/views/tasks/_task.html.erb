@@ -1,3 +1,12 @@
-<div id="<%= dom_id task %>" class="<%= task.is_completed ? "completed" : "" %>">
-    <%= task.name %>
+<div id="<%= dom_id task %>" class="<%= task.is_completed ? "text-decoration-line-through" : "" %>">
+    <div class="row">
+        <div class="col">
+            <%= task.name %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <%= task.description%>
+        </div>
+      </div>
 </div>
