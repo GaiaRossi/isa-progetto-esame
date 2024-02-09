@@ -43,6 +43,7 @@ gem "tzinfo-data", platforms: %i[ mswin mswin64 mingw x64_mingw jruby ]
 gem "bootsnap", require: false
 
 # Bootstrap for CSS
+gem "sassc-rails"
 gem 'jquery-rails'
 gem 'cssbundling-rails'
 gem 'bootstrap', '~> 5.3.2'
