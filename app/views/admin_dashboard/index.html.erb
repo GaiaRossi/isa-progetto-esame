@@ -1,65 +1,90 @@
-<h1>Hello, <%= current_user.username %></h1>
+<div class="row">
+    <div class="col">
+        <h1>Hello, <%= current_user.username %></h1>
+    </div>
+  </div>
 <div class="projects-overview">
-    <h3>Projects overview</h3>
-    <div class="counters">
-        <div class="project-counter">
-            <p>
-                <%= pluralize(@projects.count, "project")%> created.
-            </p>
+    <div class="row">
+        <div class="col">
+            <h3>Projects overview</h3>
         </div>
-        <div class="task-counter">
-            <p>
+      </div>
+      
+    <div class="counters">
+        <div class="row project-counter">
+            <div class="col">
+                <%= pluralize(@projects.count, "project")%> created.
+            </div>
+        </div>
+        <div class="row task-counter">
+            <div class="col">
                 <%= pluralize(@tasks.not_completed.count, "task") %> not completed.
+            </div>
+            <div class="col">
                 <%= pluralize(@tasks.completed.count, "task") %> completed.
-            </p>
+            </div>
         </div>
     </div>
-    <table>
-        <thead>
-            <tr>
-                <td>Project</td>
-                <td>Description</td>
-                <td>Tasks</td>
-            </tr>
-        </thead>
-        <tbody>
-            <% for project in @projects %>
-                <tr>
-                    <td><%= project.name %></td>
-                    <td><%= project.description %></td>
-                    <td>
-                        <ul>
-                            <% for task in project.tasks %>
-                            <li>
-                                <%= task.name %>
-                            </li>
-                            <% end %>
-                        </ul>
-                    </td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
+
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Project</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Tasks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for project in @projects %>
+                        <tr>
+                            <td><%= project.name %></td>
+                            <td><%= project.description %></td>
+                            <td>
+                                <ul>
+                                    <% for task in project.tasks %>
+                                    <li class="<%= task.is_completed ? "text-decoration-line-through" : "" %>">
+                                        <%= task.name %>
+                                    </li>
+                                    <% end %>
+                                </ul>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+      </div>
 </div>
 
 <div class="users-overview">
-    <h3>Users overview</h3>
-    <table>
-        <thead>
-            <tr>
-                <td>Username</td>
-                <td>Admin</td>
-                <td>Assigned projects</td>
-            </tr>
-        </thead>
-        <tbody>
-            <% for user in @users %>
-                <tr>
-                    <td><%= user.username %></td>
-                    <td><%= user.is_admin? %></td>
-                    <td><%= user.projects.count %></td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="col">
+            <h3>Users overview</h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Username</th>
+                        <th scope="col">Admin</th>
+                        <th scope="col">Assigned projects</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for user in @users %>
+                        <tr>
+                            <td><%= user.username %></td>
+                            <td><%= user.is_admin? %></td>
+                            <td><%= user.projects.count %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+      </div>
 </div>
