@@ -12,27 +12,46 @@
   </head>
 
   <body>
-    <nav>
-      <ul>
-        <% if signed_in? %>
-          <% if current_user.is_admin? %>
-            <li><%= link_to "Progetto", admin_dashboard_index_path %></li>
-          <% else %>
-            <li>Progetto</li>
-          <% end %>
-          <li><%= link_to "Projects", projects_path %></li>
-          <li><%= link_to "Tasks", tasks_path %></li>
-          <% if current_user.is_admin? %>
-          <li><%= link_to "Users", users_path %></li>
-          <li><%= link_to "Project assignments", project_assignments_path %></li>
-          <% end %>
-          <li><%= link_to "Sign out", user_session_path(current_user), data: { turbo_method: :delete } %></li>
-        <% else %>
-          <li><%= link_to "Sign in", new_user_session_path %></li>
-        <% end %>
-      </ul>
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Progetto</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <% if signed_in? %>
+              <% if current_user.is_admin? %>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="<%= admin_dashboard_index_path %>">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<%= users_path %>">Users</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<%= project_assignments_path %>">Projects assignments</a>
+                </li>
+              <% end %>
+              <li class="nav-item">
+                <a class="nav-link" href="<%= tasks_path %>">Tasks</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="<%= projects_path %>">Projects</a>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Sign out", user_session_path(current_user), data: { turbo_method: :delete }, class: 'nav-link' %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <a class="nav-link" href="<%= new_user_session_path %>">Sign in</a>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     </nav>
-    <div class="content">
+
+    <div class="content container text-center">
     <%= yield %>
     </div>
   </body>
