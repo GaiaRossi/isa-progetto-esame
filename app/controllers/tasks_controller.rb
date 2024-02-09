@@ -17,7 +17,11 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
+    if current_user.is_admin?
+    @projects = Project.all
+    else
     @projects = Project.assigned_to(current_user)
+    end
   end
 
   # GET /tasks/1/edit
