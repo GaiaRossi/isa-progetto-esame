@@ -3,16 +3,16 @@
 <%= render @project %>
 
 <div>
-  <% if current_user.is_admin? %>
   <div class="row">
+  <% if current_user.is_admin? %>
     <div class="col">
       <%= link_to "Edit this project", edit_project_path(@project), class: 'btn btn-dark' %>
     </div>
+    <% end %>
     <div class="col">
       <%= link_to "Back to projects", projects_path, class: 'btn btn-outline-dark' %>
     </div>
   </div>
-  <% end %>
 
   <% if current_user.is_admin? %>
   <div class="row">
