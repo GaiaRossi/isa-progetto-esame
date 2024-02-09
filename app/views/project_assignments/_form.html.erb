@@ -1,25 +1,45 @@
 <%= form_with(model: project_assignment) do |form| %>
-  <% if project_assignment.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(project_assignment.errors.count, "error") %> prohibited this project_assignment from being saved:</h2>
+<div class="row">
+  <div class="col">
+    <% if project_assignment.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(project_assignment.errors.count, "error") %> prohibited this project_assignment from being saved:</h2>
+    
+        <ul>
+          <% project_assignment.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</div>
 
-      <ul>
-        <% project_assignment.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
+<div class="row">
+  <div class="col">
     <%= form.label :project_id %>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
     <%= form.collection_select :project_id, Project.all, :id, :name %>
   </div>
-  <div>
+</div>
+
+<div class="row">
+  <div class="col">
     <%= form.label :user_id %>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
     <%= form.collection_select :user_id, User.all, :id, :username %>
   </div>
-  <div>
+</div>
+
+<div class="row">
+  <div class="col">
     <%= form.submit %>
   </div>
+</div>
 <% end %>

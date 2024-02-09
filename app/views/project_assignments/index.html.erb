@@ -1,14 +1,28 @@
-<p style="color: green"><%= notice %></p>
+<div class="row">
+  <div class="col">
+    <p style="color: green"><%= notice %></p>
+  </div>
+</div>
 
-<h1>Project assignments</h1>
+<div class="row">
+  <div class="col">
+    <h1>Project assignments</h1>
+  </div>
+</div>
 
 <div id="project_assignments">
   <% @project_assignments.each do |project_assignment| %>
     <%= render project_assignment %>
-    <p>
-      <%= link_to "Show this project assignment", project_assignment %>
-    </p>
+    <div class="row">
+      <div class="col">
+        <%= link_to "Show this project assignment", project_assignment, class: 'btn btn-outline-dark' %>
+      </div>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "New project assignment", new_project_assignment_path %>
+<div class="row">
+  <div class="col">
+    <%= link_to "New project assignment", new_project_assignment_path, class: 'btn btn-dark' %>
+  </div>
+</div>
