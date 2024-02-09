@@ -1,10 +1,21 @@
-<h1>Editing user</h1>
+<div class="row">
+  <div class="col">
+    <h1>Editing user</h1>
+  </div>
+</div>
+
 
 <%= render "form", user: @user %>
 
 <br>
 
 <div>
-  <%= link_to "Show this user", @user %> |
-  <%= link_to "Back to users", users_path %>
+  <div class="row">
+    <div class="col">
+      <%= link_to "Show this user", @user, class: 'btn btn-dark' %>
+    </div>
+    <div class="col">
+      <%= link_to "Back to users", users_path, class: 'btn btn-outline-dark' %>
+    </div>
+  </div>
 </div>

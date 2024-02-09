@@ -1,32 +1,66 @@
 <%= form_with(model: user) do |form| %>
   <% if user.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-        <% user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <div class="row">
+    <div class="col">
+      <div style="color: red">
+        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  
+        <ul>
+          <% user.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
+  </div>
   <% end %>
-  <div>
-    <%= form.label :username %><br>
-    <%= form.text_field :username %>
+  <div class="row">
+    <div class="col">
+      <%= form.label :username %>
+    </div>
   </div>
-  <div>
-    <%= form.label :is_admin %><br>
-    <%= form.check_box :is_admin%>
+  <div class="row">
+    <div class="col">
+      <%= form.text_field :username %>
+    </div>
   </div>
-  <div>
-    <%= form.label :password %><br>
-    <%= form.password_field :password %>
+
+  <div class="row">
+    <div class="col">
+      <%= form.label :is_admin %><br>
+    </div>
   </div>
-  <div>
-    <%= form.label :password_confirmation %><br>
-    <%= form.password_field :password_confirmation %>
+  <div class="row">
+    <div class="col">
+      <%= form.check_box :is_admin%>
+    </div>
   </div>
-  <div>
-    <%= form.submit %>
+
+  <div class="row">
+    <div class="col">
+      <%= form.label :password %><br>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= form.password_field :password %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <%= form.label :password_confirmation %><br>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= form.password_field :password_confirmation %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <%= form.submit %>
+    </div>
   </div>
 <% end %>
