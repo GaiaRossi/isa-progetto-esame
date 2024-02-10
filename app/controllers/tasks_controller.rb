@@ -26,6 +26,11 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
+    if current_user.is_admin?
+      @projects = Project.all
+    else
+      @projects = Project.assigned_to(current_user)
+    end
   end
 
   # POST /tasks or /tasks.json

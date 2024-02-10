@@ -2,7 +2,7 @@ require "test_helper"
 
 class TasksControllerTest < ActionDispatch::IntegrationTest
   setup do
-    log_in_as_admin
+    log_in_as_standard
     @task = tasks(:one)
   end
 
