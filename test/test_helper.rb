@@ -16,5 +16,11 @@ module ActiveSupport
         user: { username: users(:admin).username, password: "test_password_admin" }
       }
     end
+
+    def log_in_as_standard
+      post user_sessions_url, params: {
+        user: { username: users(:standard).username, password: "test_password_standard" }
+      }
+    end
   end
 end
