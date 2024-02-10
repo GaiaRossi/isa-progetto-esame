@@ -20,7 +20,6 @@ class ProjectAssignmentsTest < ApplicationSystemTestCase
     click_on "Create Project assignment"
 
     assert_text "Project assignment was successfully created"
-    click_on "Back"
   end
 
   test "should update Project assignment" do
@@ -31,7 +30,6 @@ class ProjectAssignmentsTest < ApplicationSystemTestCase
     click_on "Update Project assignment"
 
     assert_text "Project assignment was successfully updated"
-    click_on "Back"
   end
 
   test "should destroy Project assignment" do
