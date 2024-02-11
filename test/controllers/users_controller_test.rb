@@ -49,7 +49,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to users_url
   end
 
-  #testing per standard user
+  # Testing standard user
   test "standard should not get index" do
     log_in_as_standard
     get users_url
