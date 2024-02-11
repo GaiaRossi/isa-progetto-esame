@@ -1,24 +1,33 @@
-# README
+# Steps per eseguire l'applicazione sul Docker locale
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Scaricare Docker
 
-Things you may want to cover:
+* Clonare la repository con il seguente comando:
 
-* Ruby version
+    ```
+    git clone https://github.com/GaiaRossi/isa-progetto-esame
 
-* System dependencies
+    ```
 
-* Configuration
+* Entrare nella directory clonata:
 
-* Database creation
+    ```
+    cd isa-progetto-esame
+    ```
+* Creare il file .env che contiene le variabili d'ambiente utili per i container docker. Le informazioni che devono essere presenti sono:
 
-* Database initialization
+    - DATABASE_PASSWORD: password per l'accesso al db PostgreSQL
+    - ADMIN_RAILS_PASSWORD: password per utente admin
+    - STANDARD_RAILS_PASSWORD: password per utente standard
 
-* How to run the test suite
+* Creare i container dell'applicazione:
 
-* Services (job queues, cache servers, search engines, etc.)
+    ```
+    docker compose up
+    ```
 
-* Deployment instructions
+* Una volta creati i container, è possibile utilizzare l'applicazione visitando:
 
-* ...
+    ```
+    https://localhost:3000
+    ```

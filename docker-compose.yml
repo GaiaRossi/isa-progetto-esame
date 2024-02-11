@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: postgres
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+    ports:
+      - "5432:5432"
+  
+  webapp:
+    container_name: rails_app
+    build: .
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    environment:
+      - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
