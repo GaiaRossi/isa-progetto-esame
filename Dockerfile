@@ -11,7 +11,8 @@ WORKDIR /rails
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
+    BUNDLE_WITHOUT="development" \
+    RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
 
 # Common layers
 RUN apt-get update -qq && apt-get upgrade -y
@@ -69,6 +70,9 @@ COPY --from=build /rails /rails
 RUN useradd rails --create-home --shell /bin/bash && \
     chown -R rails:rails db log storage tmp
 USER rails:rails
+
+# Create master.key
+RUN bin/rails credentials:edit
 
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]

@@ -19,6 +19,7 @@
     - DATABASE_PASSWORD: password per l'accesso al db PostgreSQL
     - ADMIN_RAILS_PASSWORD: password per utente admin
     - STANDARD_RAILS_PASSWORD: password per utente standard
+    - DATABASE_HOST: nome dell'host che ospita il database
 
 * Creare i container dell'applicazione:
 
