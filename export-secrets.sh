@@ -1,1 +1,0 @@
-export RAILS_MASTER_KEY=`cat /run/secrets/rails_master_key`
