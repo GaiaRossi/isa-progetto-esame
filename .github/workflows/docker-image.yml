@@ -22,7 +22,7 @@ jobs:
       run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag progetto-isa:$(date +%s)
+      run: docker build . --file Dockerfile --tag gaiarossiunife/progetto-isa:latest
 
     - name: Docker Push
-      run: docker push gaiarossiunife/progetto-isa:$(date +%s)
+      run: docker push gaiarossiunife/progetto-isa:latest
