@@ -13,12 +13,19 @@
     ```
     cd isa-progetto-esame
     ```
+
+* Creare una nuova master key:
+    ```
+    rails credentials:edit
+    ```
+
 * Creare il file .env che contiene le variabili d'ambiente utili per i container docker. Le informazioni che devono essere presenti sono:
 
     - DATABASE_PASSWORD: password per l'accesso al db PostgreSQL
     - ADMIN_RAILS_PASSWORD: password per utente admin
     - STANDARD_RAILS_PASSWORD: password per utente standard
     - DATABASE_HOST: nome dell'host che ospita il database
+    - RAILS_MASTER_KEY: chiave generata al passo precedente
 
 * Creare i container dell'applicazione:
 
