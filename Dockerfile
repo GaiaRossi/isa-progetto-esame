@@ -65,6 +65,11 @@ RUN apt-get update -qq && \
 COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
 
+# Esposizione master key
+COPY ./export-secrets.sh .
+RUN chmod +x ./export-secrets.sh
+RUN --mount=type=secret,id=rails_master_key ./export-secrets.sh
+
 # Run and own only the runtime files as a non-root user for security
 RUN useradd rails --create-home --shell /bin/bash && \
     chown -R rails:rails db log storage tmp
@@ -73,10 +78,6 @@ USER rails:rails
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
-# Esposizione master key
-COPY ./export-secrets.sh .
-RUN chmod +x ./export-secrets.sh
-RUN --mount=type=secret,id=rails_master_key ./export-secrets.sh
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
