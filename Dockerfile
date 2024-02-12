@@ -11,8 +11,7 @@ WORKDIR /rails
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development" \
-    RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
+    BUNDLE_WITHOUT="development"
 
 # Common layers
 RUN apt-get update -qq && apt-get upgrade -y
@@ -74,6 +73,9 @@ USER rails:rails
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
+# Esposizione master key
+COPY export-secrets.sh .
+RUN --mount=type=secret,id=rails_master_key ./build-script.sh
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000

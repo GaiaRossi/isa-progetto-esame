@@ -13,7 +13,7 @@ services:
   
   webapp:
     container_name: rails_app
-    build: .
+    image: gaiarossiunife/progetto-isa 
     restart: always
     depends_on:
       - db

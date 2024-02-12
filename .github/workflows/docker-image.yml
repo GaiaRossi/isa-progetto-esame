@@ -23,7 +23,8 @@ jobs:
     - name: Build the Docker image
       env:
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-      run: docker build . --file Dockerfile --tag gaiarossiunife/progetto-isa:latest
+        DOCKER_BUILDKIT: 1
+      run: docker build . --file Dockerfile --secret id=rails_master_key,env=RAILS_MASTER_KEY --tag gaiarossiunife/progetto-isa:latest
 
     - name: Docker Push
       run: docker push gaiarossiunife/progetto-isa:latest
