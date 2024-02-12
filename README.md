@@ -6,7 +6,6 @@
 
     ```
     git clone https://github.com/GaiaRossi/isa-progetto-esame
-
     ```
 
 * Entrare nella directory clonata:
