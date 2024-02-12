@@ -74,8 +74,8 @@ USER rails:rails
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Esposizione master key
-COPY export-secrets.sh .
-RUN chmod +x export-secrets.sh
+COPY ./export-secrets.sh .
+RUN chmod +x ./export-secrets.sh
 RUN --mount=type=secret,id=rails_master_key ./export-secrets.sh
 
 # Start the server by default, this can be overwritten at runtime
