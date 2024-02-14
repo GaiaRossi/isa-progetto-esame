@@ -14,14 +14,33 @@
     cd isa-progetto-esame
     ```
 
-* Si può servire direttamente l'applicazione, avendo tutte le dipendenze necessarie e il DB PostgreSQL funzionante:
+* Data una nuova istanza di PostgreSQL bisogna prima creare il database, per fare ciò:
     ```
+    bundle install
+    npm install
     export DATABASE_HOST=localhost
-    export DATABASE_PASSWORD=<inserire la password>
+    export DATABASE_PASSWORD=<inserire la password del database>
+    rails db:create
+    rails db:migrate
+    rails db:seed
+    ```
+
+* Se non si vuole installare in locale un DB PostgreSQL si può creare un container con il seguente comando:
+    ```
+    docker run --name some-postgres -p 5432:5432 -e POSTGRES_PASSWORD=<inserire la password del database> -d postgres
+    ```
+
+* Si può servire direttamente l'applicazione, avendo tutte le dipendenze necessarie e il DB PostgreSQL funzionante e configurata:
+    ```
+    bundle install # se non fatto al passo prima
+    npm install # se non fatto al passo prima
+    export DATABASE_HOST=localhost # se non fatto al passo prima
+    export DATABASE_PASSWORD=<inserire la password del database> # se non fatto al passo prima
     export ADMIN_RAILS_PASSWORD=<password per utente admin>
     export STANDARD_RAILS_PASSWORD=<password per utente normale>
     rails s
     ```
+
 
 * Oppure si può creare il docker compose, ma bisogna eliminare le credenziali già presenti con:
     ```
