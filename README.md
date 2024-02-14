@@ -14,8 +14,12 @@
     cd isa-progetto-esame
     ```
 
-* Si può servire direttamente l'applicazione, avendo tutte le dipendenze necessarie:
+* Si può servire direttamente l'applicazione, avendo tutte le dipendenze necessarie e il DB PostgreSQL funzionante:
     ```
+    export DATABASE_HOST=localhost
+    export DATABASE_PASSWORD=<inserire la password>
+    export ADMIN_RAILS_PASSWORD=<password per utente admin>
+    export STANDARD_RAILS_PASSWORD=<password per utente normale>
     rails s
     ```
 
