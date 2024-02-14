@@ -20,6 +20,8 @@
     npm install
     export DATABASE_HOST=localhost
     export DATABASE_PASSWORD=<inserire la password del database>
+    export ADMIN_RAILS_PASSWORD=<password per utente admin>
+    export STANDARD_RAILS_PASSWORD=<password per utente normale>
     rails db:create
     rails db:migrate
     rails db:seed
@@ -36,11 +38,14 @@
     npm install # se non fatto al passo prima
     export DATABASE_HOST=localhost # se non fatto al passo prima
     export DATABASE_PASSWORD=<inserire la password del database> # se non fatto al passo prima
-    export ADMIN_RAILS_PASSWORD=<password per utente admin>
-    export STANDARD_RAILS_PASSWORD=<password per utente normale>
+    export ADMIN_RAILS_PASSWORD=<password per utente admin> # se non fatto al passo prima
+    export STANDARD_RAILS_PASSWORD=<password per utente normale> # se non fatto al passo prima
     rails s
     ```
 
+* Si può quindi accedere con una delle due utenze create:
+    - username: admin_user password: < password admin inserita precedentemente >
+    - username: standard_user password: < password standard inserita precedentemente >
 
 * Oppure si può creare il docker compose, ma bisogna eliminare le credenziali già presenti con:
     ```
