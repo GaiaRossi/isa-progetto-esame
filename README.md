@@ -14,6 +14,16 @@
     cd isa-progetto-esame
     ```
 
+* Si può servire direttamente l'applicazione, avendo tutte le dipendenze necessarie:
+    ```
+    rails s
+    ```
+
+* Oppure si può creare il docker compose, ma bisogna eliminare le credenziali già presenti con:
+    ```
+    rm ./config/credentials.yml.enc
+    ```
+
 * Creare una nuova master key:
     ```
     rails credentials:edit
@@ -24,7 +34,6 @@
     - DATABASE_PASSWORD: password per l'accesso al db PostgreSQL
     - ADMIN_RAILS_PASSWORD: password per utente admin
     - STANDARD_RAILS_PASSWORD: password per utente standard
-    - DATABASE_HOST: nome dell'host che ospita il database
     - RAILS_MASTER_KEY: chiave generata al passo precedente
 
 * Creare i container dell'applicazione:
