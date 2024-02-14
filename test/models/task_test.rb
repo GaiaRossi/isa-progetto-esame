@@ -1,6 +1,12 @@
 require "test_helper"
 
 class TaskTest < ActiveSupport::TestCase
+
+  setup do
+    @project = projects(:two)
+    @user = users(:standard)
+  end
+
   test 'valid task' do
     project = Project.create(name: 'progetto', description: 'descrizione progetto')
     task = Task.new(name: 'task', description: 'descrizione task', project_id: project.id)
@@ -23,5 +29,13 @@ class TaskTest < ActiveSupport::TestCase
   test 'invalid if project is missing' do
     task = Task.new(name: 'task', description: 'descrizione task', project_id: -1)
     refute task.valid?, 'task created with incorrect project reference'
+  end
+
+  test 'correct visible_to scope' do
+    task_assigned = Task.create(name: "task assigned", description: "descrizione", project_id: @project.id)
+    task_not_assigned = Task.create(name: "task not assigned", description: "descrizione not assigned", project_id: projects(:one).id)
+
+    scope_resp = Task.visible_to(@user)
+    assert_includes scope_resp, task_assigned
   end
 end
