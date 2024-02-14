@@ -11,5 +11,16 @@ two:
   description: "Secondo progetto test"
 
 removable:
+  id: 3
   name: "Progetto rimovibile test"
   description: "Progetto test"
+
+create_test:
+  id: 4
+  name: "Scrittura test"
+  description: "Scrivere test per applicazione"
+
+prototipe_UI:
+  id: 5
+  name: "Definire UI"
+  description: "Prototipare la UI"

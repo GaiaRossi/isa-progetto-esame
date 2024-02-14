@@ -21,3 +21,15 @@ removable:
   username: "test_user"
   is_admin: false
   password_digest: <%= BCrypt::Password.create('test_password', cost: 5) %>
+
+mario:
+  id: 4
+  username: "mario"
+  is_admin: false
+  password_digest: <%= BCrypt::Password.create('mario_123', cost: 5) %>
+
+lucia:
+  id: 5
+  username: "lucia12"
+  is_admin: false
+  password_digest: <%= BCrypt::Password.create('gatto_lucia123', cost: 5) %>

@@ -8,3 +8,23 @@ one:
   name: "Task progetto 1"
   description: "Task del progetto 1 test"
   project_id: 1
+
+prototype_login:
+  name: "UI Login"
+  description: "Prototipare UI del login"
+  project_id: 5
+
+prototype_index:
+  name: "UI Indice"
+  description: "Prototipare UI dell'indice"
+  project_id: 5
+
+create_unit_test:
+  name: "Creare unit test"
+  description: "Implementare test di unità"
+  project_id: 4
+
+create_integration_test:
+  name: "Creare test integrazione"
+  description: "Implementare test di integrazione"
+  project_id: 4

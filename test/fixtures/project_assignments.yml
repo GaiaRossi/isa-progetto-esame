@@ -4,6 +4,14 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one:
+standard_to_second:
   project_id: 2
   user_id: 2
+
+mario_to_UI:
+  project_id: 5
+  user_id: 4
+
+lucia_to_test:
+  project_id: 4
+  user_id: 5
