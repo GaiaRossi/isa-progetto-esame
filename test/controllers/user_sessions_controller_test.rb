@@ -1,6 +1,10 @@
 require "test_helper"
 
 class UserSessionsControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @user = users(:mario)
+  end
+
   test "should get new" do
     get new_user_session_url
     assert_response :success
@@ -8,7 +12,7 @@ class UserSessionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should log in" do
     post user_sessions_url, params: {
-      user: { username: users(:admin).username, password: "test_password_admin" }
+      user: { username: @user.username, password: "mario_123" }
     }
     assert flash[:notice] = "Login success!"
     assert_redirected_to projects_url
@@ -19,5 +23,6 @@ class UserSessionsControllerTest < ActionDispatch::IntegrationTest
       user: { username: "", password: "" }
     }
     assert flash[:notice] = "Login failed!"
+    assert_redirected_to new_user_session_url
   end
 end

@@ -3,7 +3,7 @@ require "test_helper"
 class ProjectAssignmentsControllerTest < ActionDispatch::IntegrationTest
   setup do
     log_in_as_admin
-    @project_assignment = project_assignments(:one)
+    @project_assignment = project_assignments(:lucia_to_test)
   end
 
   test "admin should get index" do
