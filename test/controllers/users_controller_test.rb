@@ -39,6 +39,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   test "admin should update user" do
     patch user_url(@user), params: { user: { password: "cambio_password" } }
     assert_redirected_to user_url(@user)
+    assert flash[:notice] = "User was successfully updated."
   end
 
   test "admin should destroy user" do
@@ -47,6 +48,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to users_url
+    assert flash[:notice] = "User was successfully destroyed."
   end
 
   # Testing standard user

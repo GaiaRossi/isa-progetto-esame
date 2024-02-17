@@ -25,4 +25,12 @@ class UserSessionsControllerTest < ActionDispatch::IntegrationTest
     assert flash[:notice] = "Login failed!"
     assert_redirected_to new_user_session_url
   end
+
+  test "should log out" do
+    post user_sessions_url, params: {
+      user: { username: @user.username, password: "mario_123" }
+    }
+    delete user_session_url(@user.id)
+    assert_redirected_to root_path
+  end
 end

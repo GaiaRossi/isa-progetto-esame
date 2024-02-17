@@ -39,6 +39,7 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
   test "should update task" do
     patch task_url(@task), params: { task: { description: "cambio descrizione" } }
     assert_redirected_to task_url(@task)
+    assert flash[:notice] = "Task was successfully updated."
   end
 
   test "should destroy task" do
@@ -47,5 +48,6 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to tasks_url
+    assert flash[:notice] = "Task was successfully destroyed."
   end
 end

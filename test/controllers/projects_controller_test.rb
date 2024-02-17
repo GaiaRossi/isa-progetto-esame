@@ -39,6 +39,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   test "admin should update project" do
     patch project_url(@project), params: { project: { description: @project.description, name: @project.name } }
     assert_redirected_to project_url(@project)
+    assert flash[:notice] = "Project was successfully updated."
   end
 
   test "admin should destroy project" do
@@ -47,6 +48,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to projects_url
+    assert flash[:notice] = "Project was successfully destroyed."
   end
 
   # Testing standard user
