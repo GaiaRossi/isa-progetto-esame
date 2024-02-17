@@ -1,4 +1,4 @@
-# Steps per eseguire l'applicazione sul Docker locale
+# Steps per eseguire l'applicazione sul Docker locale o localmente senza Docker
 
 * Scaricare Docker
 
