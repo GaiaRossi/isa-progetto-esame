@@ -73,5 +73,5 @@
 * Una volta creati i container, è possibile utilizzare l'applicazione visitando:
 
     ```
-    https://localhost:3000
+    http://localhost:3000
     ```
