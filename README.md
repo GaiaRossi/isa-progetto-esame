@@ -1,5 +1,7 @@
 # Steps per eseguire l'applicazione sul Docker locale o localmente senza Docker
 
+## Passi comuni
+
 * Scaricare Docker
 
 * Clonare la repository con il seguente comando:
@@ -13,6 +15,8 @@
     ```
     cd isa-progetto-esame
     ```
+
+## Esecuzione locale senza Docker
 
 * Data una nuova istanza di PostgreSQL bisogna prima creare il database, per fare ciò:
     ```
@@ -46,6 +50,8 @@
 * Si può quindi accedere con una delle due utenze create:
     - username: admin_user password: < password admin inserita precedentemente >
     - username: standard_user password: < password standard inserita precedentemente >
+
+## Esecuzione locale con Docker
 
 * Oppure si può creare il docker compose, ma bisogna eliminare le credenziali già presenti con:
     ```
