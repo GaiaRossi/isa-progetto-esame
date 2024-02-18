@@ -2,6 +2,7 @@ class Task < ApplicationRecord
     belongs_to :project
     validates :name, :project_id, presence: true
     validates :name, uniqueness: true
+    validates :is_completed, inclusion: [true, false]
 
     scope :visible_to, -> (user){
         joins(:project => :user)
