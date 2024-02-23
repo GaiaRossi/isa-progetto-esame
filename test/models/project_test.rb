@@ -32,5 +32,6 @@ class ProjectTest < ActiveSupport::TestCase
 
     scope_resp = Project.assigned_to(user)
     assert_includes scope_resp, project_a
+    assert_not_includes scope_resp, project_na
   end
 end
