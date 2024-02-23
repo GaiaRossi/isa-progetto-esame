@@ -40,9 +40,10 @@ class TaskTest < ActiveSupport::TestCase
 
   test 'correct visible_to scope' do
     task_assigned = Task.create(name: "task assigned", description: "descrizione", project_id: @project.id, is_completed: false)
-    task_not_assigned = Task.create(name: "task not assigned", description: "descrizione not assigned", project_id: projects(:one).id, is_completed: false)
+    task_not_assigned = Task.create(name: "task not assigned", description: "descrizione not assigned", project_id: projects(:removable).id, is_completed: false)
 
     scope_resp = Task.visible_to(@user)
     assert_includes scope_resp, task_assigned
+    assert_not_includes scope_resp, task_not_assigned
   end
 end
