@@ -4,6 +4,10 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
+standard_to_first:
+  project_id: 1
+  user_id: 2
+
 standard_to_second:
   project_id: 2
   user_id: 2
